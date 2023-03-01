@@ -1,0 +1,35 @@
+<td style="padding-top: 20px; padding-left: 8px; padding-right: 20px; padding-bottom: 20px;">
+
+  <table mat-table [dataSource]="mysteries" class="mat-elevation-z8">
+
+       
+  
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef style="padding-right: 200px;  text-align: center; margin: auto; "> ID </th>
+    <td mat-cell *matCellDef="let mystery" style="padding-right: 200px;  text-align: center; margin: auto; "> {{mystery.id}} </td>
+  </ng-container>
+  
+
+ 
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Title </th>
+    <td mat-cell *matCellDef="let mysteries"> {{mysteries.title}} </td>
+  </ng-container>
+  
+  
+  <ng-container matColumnDef="posterURL">
+    <th mat-header-cell *matHeaderCellDef style="padding-right: 200px;  text-align: center; margin: auto; margin-left: 5px;"> Poster </th>
+    <td mat-cell *matCellDef="let mysteries"> <img [src]="mysteries.posterURL" style="padding-right: 200px; display: block; margin-left: 10px;  margin-right: 10px; width: 80px; height: 80px;  "> </td>
+  </ng-container>
+  
+ 
+  <ng-container matColumnDef="imdbId">
+    <th mat-header-cell *matHeaderCellDef style="padding-right: 200px;  text-align: center; margin: auto; "> Imdb </th>
+    <td mat-cell *matCellDef="let mysteries">  <a [href]="mysteries.imdbId">Imdb</a></td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+</td>

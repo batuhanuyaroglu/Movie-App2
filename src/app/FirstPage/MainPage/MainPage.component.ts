@@ -10,16 +10,12 @@ export class MainPageComponent implements OnInit {
   
 
   constructor(private router:Router) { }
-  goToPage(Clasic:string):void{
-    // this.router.navigateByUrl(['{/tableexample}'])
-  }
+  
+  
 
   ngOnInit() {
     
   }
   
-// click(){
-  
-// }
 
 }

@@ -6,8 +6,7 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet'
 import {MatDialog} from '@angular/material/dialog';
 import {MatMenuTrigger} from '@angular/material/menu';
 
-
- export interface Movie {
+export interface Movie {
   id: number;
   title: string;
   posterURL : string;
@@ -15,9 +14,9 @@ import {MatMenuTrigger} from '@angular/material/menu';
 }
 
 @Component({
-  selector: 'app-tableexample',
-  templateUrl: './tableexample.component.html',
-  styleUrls: ['./tableexample.component.css'],
+  selector: 'app-horrorMovie',
+  templateUrl: './horrorMovie.component.html',
+  styleUrls: ['./horrorMovie.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -25,13 +24,9 @@ import {MatMenuTrigger} from '@angular/material/menu';
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
+
 })
-
-
-export class TableexampleComponent implements OnInit {
-
-  
-  
+export class HorrorMovieComponent implements OnInit {
 
   movies : Movie | null | undefined;
   
@@ -40,34 +35,26 @@ export class TableexampleComponent implements OnInit {
 
  
   benimfilmler:any;
-  clasics: any;
+  horrors: any;
   imdblink: string = "";
   linkList: any = [] ;
 
- 
 
-  constructor (private service:PostService ){}
+  constructor(private service:PostService) { }
 
-  ngOnInit() 
-  {
-    this.service.getPostclasic()
+  ngOnInit() {
+    this.service.getPostshorror()
     .subscribe((response) => {
-      this.clasics = response;
+      this.horrors = response;
       
-      console.log(this.clasics,"Clasics");
-      this.movies=this.clasics;
-      this.clasics.forEach((item: { imdbId: any; }) =>  {
+      console.log(this.horrors,"Horrors");
+      this.movies=this.horrors;
+      this.horrors.forEach((item: { imdbId: any; }) =>  {
         this.imdblink="https://www.imdb.com/title/"+item.imdbId;
         item.imdbId=this.imdblink;
       });
     });
     this.benimfilmler=this.movies
-   
   }
-  
+
 }
-
-
-
-  
-

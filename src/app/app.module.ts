@@ -14,16 +14,31 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { MainPageComponent } from './FirstPage/MainPage/MainPage.component';
+import { HorrorMovieComponent } from './components/horrorMovie/horrorMovie.component';
+import { ComedyComponent } from './components/comedy/comedy.component';
+import { DramaComponent } from './components/drama/drama.component';
+import { FamilyComponent } from './components/family/family.component';
+import { MysteryComponent } from './components/mystery/mystery.component';
+import { ScienceComponent } from './components/science/science.component';
+import { WesternComponent } from './components/western/western.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     TableexampleComponent,
     ButtonsComponent,
-    MainPageComponent
+    MainPageComponent,
+    HorrorMovieComponent,
+    ComedyComponent,
+    DramaComponent,
+    FamilyComponent,
+    MysteryComponent,
+    ScienceComponent,
+    WesternComponent
    ],
   imports: [
     BrowserModule,
@@ -38,6 +53,10 @@ import { MainPageComponent } from './FirstPage/MainPage/MainPage.component';
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
+
+    NgxPaginationModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

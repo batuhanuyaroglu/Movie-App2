@@ -6,8 +6,7 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet'
 import {MatDialog} from '@angular/material/dialog';
 import {MatMenuTrigger} from '@angular/material/menu';
 
-
- export interface Movie {
+export interface Movie {
   id: number;
   title: string;
   posterURL : string;
@@ -15,9 +14,9 @@ import {MatMenuTrigger} from '@angular/material/menu';
 }
 
 @Component({
-  selector: 'app-tableexample',
-  templateUrl: './tableexample.component.html',
-  styleUrls: ['./tableexample.component.css'],
+  selector: 'app-science',
+  templateUrl: './science.component.html',
+  styleUrls: ['./science.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -26,13 +25,7 @@ import {MatMenuTrigger} from '@angular/material/menu';
     ]),
   ],
 })
-
-
-export class TableexampleComponent implements OnInit {
-
-  
-  
-
+export class ScienceComponent implements OnInit {
   movies : Movie | null | undefined;
   
 
@@ -40,34 +33,25 @@ export class TableexampleComponent implements OnInit {
 
  
   benimfilmler:any;
-  clasics: any;
+  sciences: any;
   imdblink: string = "";
   linkList: any = [] ;
 
- 
+  constructor(private service:PostService) { }
 
-  constructor (private service:PostService ){}
-
-  ngOnInit() 
-  {
-    this.service.getPostclasic()
+  ngOnInit() {
+    this.service.getPostsscience()
     .subscribe((response) => {
-      this.clasics = response;
+      this.sciences = response;
       
-      console.log(this.clasics,"Clasics");
-      this.movies=this.clasics;
-      this.clasics.forEach((item: { imdbId: any; }) =>  {
+      console.log(this.sciences,"Sciences");
+      this.movies=this.sciences;
+      this.sciences.forEach((item: { imdbId: any; }) =>  {
         this.imdblink="https://www.imdb.com/title/"+item.imdbId;
         item.imdbId=this.imdblink;
       });
     });
     this.benimfilmler=this.movies
-   
   }
-  
+
 }
-
-
-
-  
-
